@@ -1,0 +1,5 @@
+{
+  "name": "Diggity",
+  "description": "Upload a photo of an artifact to uncover its history.",
+  "requestFramePermissions": []
+}
