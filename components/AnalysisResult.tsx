@@ -1,7 +1,8 @@
+
 import React from 'react';
 import { ScrollIcon, SpeakerWaveIcon, PlayIcon, PauseIcon } from './icons';
-// FIX: Import SpeechState from App.tsx to ensure type consistency across the application.
-import { SpeechState } from '../App';
+
+type SpeechState = 'idle' | 'playing' | 'paused';
 
 interface AnalysisResultProps {
   result: string;
