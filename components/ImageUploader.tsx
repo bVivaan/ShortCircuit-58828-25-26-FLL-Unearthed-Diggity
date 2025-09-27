@@ -41,9 +41,9 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageSelect }) =
     setIsDragging(false);
   };
 
-  const baseClasses = 'flex flex-col items-center justify-center w-full h-64 border-2 border-dashed rounded-lg cursor-pointer transition-colors duration-200 ease-in-out';
-  const inactiveClasses = 'border-stone-300 bg-stone-50 hover:bg-stone-100';
-  const activeClasses = 'border-amber-500 bg-amber-50';
+  const baseClasses = 'flex flex-col items-center justify-center w-full h-64 border-2 border-dashed rounded-xl cursor-pointer transition-all duration-300 ease-in-out';
+  const inactiveClasses = 'border-stone-300 bg-stone-50/50 hover:bg-stone-100/50 hover:border-amber-400';
+  const activeClasses = 'border-amber-500 bg-amber-100/50 scale-105 shadow-lg';
 
   return (
     <div className="flex items-center justify-center w-full">

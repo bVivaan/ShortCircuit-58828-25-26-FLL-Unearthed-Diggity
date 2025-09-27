@@ -21,7 +21,7 @@ const FormattedText: React.FC<{ text: string }> = ({ text }) => {
         const trimmedLine = line.trim();
         
         if (trimmedLine.startsWith('**') && trimmedLine.endsWith('**')) {
-          return <h3 key={index} className="font-semibold text-lg mt-4 mb-1 text-stone-800">{trimmedLine.replace(/\*\*/g, '')}</h3>;
+          return <h3 key={index} className="font-serif font-bold text-lg mt-4 mb-2 text-stone-800">{trimmedLine.replace(/\*\*/g, '')}</h3>;
         }
         
         if (trimmedLine.startsWith('* ') || trimmedLine.startsWith('- ')) {
@@ -37,15 +37,15 @@ const FormattedText: React.FC<{ text: string }> = ({ text }) => {
 
 export const AnalysisResult: React.FC<AnalysisResultProps> = ({ result, onToggleSpeech, speechState, isSpeechActive }) => {
   return (
-    <div className="bg-stone-50 p-6 rounded-lg border border-stone-200 animate-fade-in">
-      <div className="flex items-center justify-between gap-3 mb-4">
+    <div className="bg-stone-50/50 p-6 rounded-xl border border-stone-200 animate-fade-in shadow-inner">
+      <div className="flex items-start justify-between gap-3 mb-4 pb-3 border-b border-stone-200">
         <div className="flex items-center gap-3">
           <ScrollIcon className="w-7 h-7 text-amber-700"/>
-          <h2 className="text-2xl font-bold text-amber-800">Analysis Complete</h2>
+          <h2 className="text-2xl font-bold font-serif text-amber-800">Analysis Complete</h2>
         </div>
         <button
           onClick={onToggleSpeech}
-          className="flex items-center gap-2 px-3 py-1 text-sm font-medium text-amber-800 bg-amber-100 border border-amber-200 rounded-md hover:bg-amber-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 transition-all"
+          className="flex items-center gap-2 px-3 py-1.5 text-sm font-semibold text-amber-800 bg-amber-100 border border-amber-200 rounded-full hover:bg-amber-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 transition-all"
           aria-label={
             isSpeechActive && speechState === 'playing' ? "Pause reading"
             : isSpeechActive && speechState === 'paused' ? "Resume reading"
@@ -70,7 +70,7 @@ export const AnalysisResult: React.FC<AnalysisResultProps> = ({ result, onToggle
           )}
         </button>
       </div>
-      <div className="prose prose-stone max-w-none text-stone-700">
+      <div className="prose prose-stone max-w-none text-stone-800">
          <FormattedText text={result} />
       </div>
     </div>

@@ -165,21 +165,21 @@ function App() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8 py-12 text-stone-800 font-sans">
-      <header className="w-full max-w-4xl text-center mb-8">
+    <div className="flex flex-col items-center justify-start min-h-screen px-4 sm:px-6 lg:px-8 py-12 md:py-20 text-stone-800 font-sans bg-parchment">
+      <header className="w-full max-w-4xl text-center mb-10">
         <div className="flex items-center justify-center gap-4">
           <HourglassIcon className="h-12 w-12 text-amber-700" />
-          <h1 className="text-4xl sm:text-5xl font-bold text-stone-900 tracking-tight">
+          <h1 className="text-5xl sm:text-6xl font-bold text-stone-900 tracking-tight font-serif">
             Diggity
           </h1>
           <MagnifyingGlassIcon className="h-12 w-12 text-amber-700" />
         </div>
-        <p className="mt-2 text-lg text-stone-600">
-          Upload a photo of an artifact to uncover its history.
+        <p className="mt-3 text-lg text-stone-600 max-w-xl mx-auto">
+          Unearth the stories of your discoveries. Just upload a photo to begin your journey through time.
         </p>
       </header>
 
-      <main className="w-full max-w-2xl bg-white rounded-2xl shadow-xl p-6 sm:p-8 ring-1 ring-stone-200">
+      <main className="w-full max-w-2xl bg-white/70 backdrop-blur-sm rounded-2xl shadow-2xl p-6 sm:p-8 ring-1 ring-stone-900/10">
         {!state.imageFile ? (
           <ImageUploader onImageSelect={handleImageSelect} />
         ) : (
@@ -198,10 +198,10 @@ function App() {
         )}
 
         {state.error && (
-          <div className="mt-8 flex items-center gap-3 bg-red-50 text-red-700 p-4 rounded-lg border border-red-200">
+          <div className="mt-8 flex items-center gap-3 bg-red-100/50 text-red-800 p-4 rounded-xl border border-red-200">
             <ErrorIcon className="h-6 w-6 flex-shrink-0" />
             <div>
-              <h3 className="font-semibold">Request Failed</h3>
+              <h3 className="font-semibold font-serif">Request Failed</h3>
               <p>{state.error}</p>
             </div>
           </div>
@@ -221,7 +221,7 @@ function App() {
                 <button
                   onClick={handleGenerateStory}
                   disabled={state.isGeneratingStory}
-                  className="flex items-center mx-auto justify-center gap-2 px-6 py-2 text-sm font-medium text-white bg-amber-600 border border-transparent rounded-md shadow-sm hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 disabled:bg-amber-400 disabled:cursor-wait transition-all"
+                  className="flex items-center mx-auto justify-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-gradient-to-br from-amber-500 to-amber-600 rounded-lg shadow-md hover:shadow-lg hover:from-amber-600 hover:to-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 disabled:opacity-60 disabled:cursor-wait transition-all duration-300 transform hover:-translate-y-0.5"
                 >
                   <BookOpenIcon className="w-5 h-5"/>
                   Tell a Funny Story
@@ -232,22 +232,22 @@ function App() {
         )}
 
         {state.isGeneratingStory && (
-          <div className="mt-6 text-center text-stone-600 animate-fade-in flex items-center justify-center gap-3">
-             <BookOpenIcon className="w-5 h-5 animate-pulse"/>
-            <p>Our AI scribe is penning a tale...</p>
+          <div className="mt-8 text-center text-stone-600 animate-fade-in flex flex-col items-center justify-center gap-3">
+             <BookOpenIcon className="w-6 h-6 animate-pulse text-amber-600"/>
+            <p className="font-serif text-stone-800">Our AI scribe is penning a tale...</p>
           </div>
         )}
 
         {state.story && (
-          <div className="mt-8 bg-amber-50 p-6 rounded-lg border border-amber-200 animate-fade-in">
-              <div className="flex items-center justify-between gap-3 mb-4">
+          <div className="mt-8 bg-amber-50/50 p-6 rounded-xl border border-amber-200 animate-fade-in shadow-inner">
+              <div className="flex items-start justify-between gap-3 mb-4 pb-3 border-b border-amber-200">
                 <div className="flex items-center gap-3">
                   <QuillIcon className="w-6 h-6 text-amber-700 flex-shrink-0" />
-                  <h3 className="text-xl font-bold text-amber-900">A Tale from the Trenches</h3>
+                  <h3 className="text-xl font-bold font-serif text-amber-900">A Tale from the Trenches</h3>
                 </div>
                 <button
                   onClick={() => handleToggleSpeech('story')}
-                  className="flex items-center gap-2 px-3 py-1 text-sm font-medium text-amber-800 bg-amber-100 border border-amber-200 rounded-md hover:bg-amber-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 transition-all"
+                  className="flex items-center gap-2 px-3 py-1.5 text-sm font-semibold text-amber-800 bg-amber-100 border border-amber-200 rounded-full hover:bg-amber-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 transition-all"
                   aria-label={
                     state.activeSpeechTarget === 'story' && state.speechState === 'playing' ? "Pause reading"
                     : state.activeSpeechTarget === 'story' && state.speechState === 'paused' ? "Resume reading"
@@ -272,10 +272,10 @@ function App() {
                   )}
                 </button>
               </div>
-              <div className="prose prose-stone max-w-none text-stone-700 pl-9">
+              <div className="prose prose-stone max-w-none text-stone-800">
                 {state.story.split('\n').filter(p => p.trim() !== '').map((paragraph, i) => {
                     if (paragraph.startsWith('**') && paragraph.endsWith('**')) {
-                        return <h4 key={i} className="text-lg font-bold !mt-0 !mb-2 text-amber-800">{paragraph.replace(/\*\*/g, '')}</h4>
+                        return <h4 key={i} className="text-lg font-bold font-serif !mt-0 !mb-2 text-amber-800">{paragraph.replace(/\*\*/g, '')}</h4>
                     }
                     // Remove any remaining asterisks from paragraphs to clean up formatting
                     return <p key={i} className="!my-2">{paragraph.replace(/\*/g, '')}</p>

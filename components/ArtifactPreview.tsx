@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { PapyrusManuscriptIcon, TrashIcon } from './icons';
 
@@ -28,7 +29,7 @@ export const ArtifactPreview: React.FC<ArtifactPreviewProps> = ({ file, onAnalyz
 
   return (
     <div className="flex flex-col items-center gap-6">
-      <div className="w-full max-w-sm rounded-lg overflow-hidden shadow-lg border border-stone-200">
+      <div className="w-full max-w-sm rounded-xl overflow-hidden shadow-xl border border-stone-200">
         {imagePreviewUrl ? (
           <img src={imagePreviewUrl} alt="Artifact preview" className="w-full h-auto object-cover" />
         ) : (
@@ -39,7 +40,7 @@ export const ArtifactPreview: React.FC<ArtifactPreviewProps> = ({ file, onAnalyz
         <button
           onClick={onReset}
           disabled={isLoading}
-          className="flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-stone-700 bg-white border border-stone-300 rounded-md shadow-sm hover:bg-stone-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+          className="flex items-center justify-center gap-2 px-5 py-3 text-sm font-semibold text-stone-700 bg-white border border-stone-300 rounded-lg shadow-sm hover:bg-stone-50 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 transform hover:-translate-y-0.5"
         >
           <TrashIcon className="w-4 h-4" />
           Remove
@@ -47,7 +48,7 @@ export const ArtifactPreview: React.FC<ArtifactPreviewProps> = ({ file, onAnalyz
         <button
           onClick={onAnalyze}
           disabled={isLoading}
-          className="flex items-center justify-center gap-2 px-6 py-2 text-sm font-medium text-white bg-amber-600 border border-transparent rounded-md shadow-sm hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 disabled:bg-amber-400 disabled:cursor-wait transition-all"
+          className="flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-gradient-to-br from-amber-500 to-amber-600 rounded-lg shadow-md hover:shadow-lg hover:from-amber-600 hover:to-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 disabled:opacity-60 disabled:cursor-wait transition-all duration-300 transform hover:-translate-y-0.5"
         >
           <PapyrusManuscriptIcon className="w-5 h-5" />
           Analyze Artifact
