@@ -165,7 +165,7 @@ function App() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-start min-h-screen px-4 sm:px-6 lg:px-8 py-12 md:py-20 text-stone-800 font-sans bg-parchment">
+    <div className="flex flex-col items-center justify-start min-h-screen px-4 sm:px-6 lg:px-8 py-12 md:py-20 text-stone-800 font-sans bg-brand-bg">
       <header className="w-full max-w-4xl text-center mb-10">
         <div className="flex items-center justify-center gap-4">
           <HourglassIcon className="h-12 w-12 text-amber-700" />
